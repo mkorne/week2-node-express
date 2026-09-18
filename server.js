@@ -13,7 +13,7 @@ app.use((req, res, next) => {
   next(); 
 });
 
-// --- ROUTES (Must come before app.listen) ---
+// --- ROUTES ---
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -28,7 +28,7 @@ app.post('/user', (req, res) => {
 });
 
 app.post('/user', (req, res) => {
-  // Add || {} to ensure destructuring doesn't fail
+  //  || {}  ensures destructuring doesn't fail
   const { name, email } = req.body || {};
 
   if (!name || !email) {
@@ -42,7 +42,7 @@ app.get('/user/:id', (req, res) => {
   res.send(`User ${userId} profile`);
 });
 
-// --- SERVER ACTIVATION (Must be at the very bottom) ---
+// --- SERVER ACTIVATION ---
 app.listen(PORT, () => {
   console.log(`Server is successfully running on http://localhost:${PORT}`);
 });
